@@ -86,16 +86,6 @@ Importa el archivo `docs/openapi.yaml` en [Swagger Editor](https://editor.swagge
 
 **URL pública:** https://proyecto-m2andres-manrique-production.up.railway.app/authors
 
-## Uso de IA
-
-Se utilizó Claude (Anthropic) como asistente durante el desarrollo del proyecto para:
-- Guía paso a paso en la implementación
-- Explicación de conceptos (middlewares, pool de conexiones, SQL parametrizado)
-- Resolución de errores
-
-Todos los prompts fueron revisados y el código fue comprendido antes de ser implementado.# MiniBlog API
-
-MiniBlog es una API REST construida con Node.js, Express y PostgreSQL. Permite gestionar autores y publicaciones de un blog, incluyendo comentarios. Fue desarrollada como proyecto integrador del Módulo 2 en DevSpark.
 
 ---
 
