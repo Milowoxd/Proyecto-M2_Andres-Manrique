@@ -2,7 +2,7 @@ openapi: "3.0.3"
 info:
   title: MiniBlog API
   version: "1.0.0"
-  description: API REST para gestión de authors y posts
+  description: API REST para gestión de authors, posts y comments
 
 servers:
   - url: http://localhost:3000
@@ -13,6 +13,7 @@ servers:
 tags:
   - name: Authors
   - name: Posts
+  - name: Comments
 
 paths:
   /authors:
@@ -155,6 +156,43 @@ paths:
         "200":
           description: Lista de posts del author
 
+  /comments:
+    get:
+      tags: [Comments]
+      summary: Listar todos los comments
+      responses:
+        "200":
+          description: Lista de comments
+
+    post:
+      tags: [Comments]
+      summary: Crear un comment
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CommentInput"
+      responses:
+        "201":
+          description: Comment creado
+        "400":
+          description: Datos inválidos
+
+  /comments/post/{postId}:
+    get:
+      tags: [Comments]
+      summary: Comments por post
+      parameters:
+        - name: postId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lista de comments del post
+
 components:
   parameters:
     Id:
@@ -171,13 +209,13 @@ components:
       properties:
         name:
           type: string
-          example: Ana García
+          example: Andres Manrique
         email:
           type: string
-          example: ana@example.com
+          example: andres@miniblog.com
         bio:
           type: string
-          example: Desarrolladora full-stack
+          example: Developer junior en DevSpark
 
     PostInput:
       type: object
@@ -188,10 +226,24 @@ components:
           example: Introducción a Node.js
         content:
           type: string
-          example: Node.js es un runtime de JavaScript...
+          example: Node.js me voló la cabeza cuando lo descubrí...
         author_id:
           type: integer
           example: 1
         published:
           type: boolean
           example: false
+
+    CommentInput:
+      type: object
+      required: [content, author_id, post_id]
+      properties:
+        content:
+          type: string
+          example: Muy buen post!
+        author_id:
+          type: integer
+          example: 1
+        post_id:
+          type: integer
+          example: 2
