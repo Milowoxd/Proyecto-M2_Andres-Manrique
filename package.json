@@ -22,6 +22,7 @@
   },
   "jest": {
     "testEnvironment": "node",
-    "testTimeout": 10000
+    "testTimeout": 10000,
+    "testMatch": ["**/tests/**/*.test.js"]
   }
 }

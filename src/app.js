@@ -3,14 +3,14 @@ const app = express();
 
 app.use(express.json());
 
-// Rutas
 const authorsRouter = require('./routes/authors');
 const postsRouter = require('./routes/posts');
+const commentsRouter = require('./routes/comments');
 
 app.use('/authors', authorsRouter);
 app.use('/posts', postsRouter);
+app.use('/comments', commentsRouter);
 
-// Middleware de errores
 const errorHandler = require('./middleware/errorHandler');
 app.use(errorHandler);
 
