@@ -84,7 +84,7 @@ Importa el archivo `docs/openapi.yaml` en [Swagger Editor](https://editor.swagge
 5. Agrega la variable DATABASE_URL al servicio de la app
 6. Railway despliega automáticamente con cada push
 
-**URL pública:** https://proyecto-m2andres-manrique-production.up.railway.app
+**URL pública:** https://proyecto-m2andres-manrique-production.up.railway.app/authors
 
 ## Uso de IA
 
