@@ -1,0 +1,197 @@
+openapi: "3.0.3"
+info:
+  title: MiniBlog API
+  version: "1.0.0"
+  description: API REST para gestión de authors y posts
+
+servers:
+  - url: http://localhost:3000
+    description: Local
+  - url: https://proyecto-m2andres-manrique-production.up.railway.app
+    description: Producción
+
+tags:
+  - name: Authors
+  - name: Posts
+
+paths:
+  /authors:
+    get:
+      tags: [Authors]
+      summary: Listar todos los authors
+      responses:
+        "200":
+          description: Lista de authors
+
+    post:
+      tags: [Authors]
+      summary: Crear un author
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthorInput"
+      responses:
+        "201":
+          description: Author creado
+        "400":
+          description: Datos inválidos
+
+  /authors/{id}:
+    get:
+      tags: [Authors]
+      summary: Obtener author por id
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Author encontrado
+        "404":
+          description: Author no encontrado
+
+    put:
+      tags: [Authors]
+      summary: Actualizar author
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthorInput"
+      responses:
+        "200":
+          description: Author actualizado
+        "404":
+          description: Author no encontrado
+
+    delete:
+      tags: [Authors]
+      summary: Eliminar author
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Author eliminado
+        "404":
+          description: Author no encontrado
+
+  /posts:
+    get:
+      tags: [Posts]
+      summary: Listar todos los posts
+      responses:
+        "200":
+          description: Lista de posts
+
+    post:
+      tags: [Posts]
+      summary: Crear un post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostInput"
+      responses:
+        "201":
+          description: Post creado
+        "400":
+          description: Datos inválidos
+
+  /posts/{id}:
+    get:
+      tags: [Posts]
+      summary: Obtener post por id
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Post encontrado
+        "404":
+          description: Post no encontrado
+
+    put:
+      tags: [Posts]
+      summary: Actualizar post
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PostInput"
+      responses:
+        "200":
+          description: Post actualizado
+        "404":
+          description: Post no encontrado
+
+    delete:
+      tags: [Posts]
+      summary: Eliminar post
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Post eliminado
+        "404":
+          description: Post no encontrado
+
+  /posts/author/{authorId}:
+    get:
+      tags: [Posts]
+      summary: Posts por author con detalle del author
+      parameters:
+        - name: authorId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Lista de posts del author
+
+components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+
+  schemas:
+    AuthorInput:
+      type: object
+      required: [name, email]
+      properties:
+        name:
+          type: string
+          example: Ana García
+        email:
+          type: string
+          example: ana@example.com
+        bio:
+          type: string
+          example: Desarrolladora full-stack
+
+    PostInput:
+      type: object
+      required: [title, content, author_id]
+      properties:
+        title:
+          type: string
+          example: Introducción a Node.js
+        content:
+          type: string
+          example: Node.js es un runtime de JavaScript...
+        author_id:
+          type: integer
+          example: 1
+        published:
+          type: boolean
+          example: false
