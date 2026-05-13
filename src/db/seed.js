@@ -3,19 +3,19 @@ const pool = require('./pool');
 const seed = async () => {
   await pool.query(`
     INSERT INTO authors (name, email, bio) VALUES
-      ('Ana García', 'ana@example.com', 'Desarrolladora full-stack apasionada por Node.js'),
-      ('Carlos Ruiz', 'carlos@example.com', 'Escritor técnico especializado en bases de datos'),
+      ('Andres Manrique', 'andres@miniblog.com', 'Developer junior en DevSpark'),
+      ('Sofia Torres', 'sofia@miniblog.com', 'Diseñadora UX apasionada por el código'),
       ('María López', 'maria@example.com', 'Ingeniera de software con foco en APIs REST')
     ON CONFLICT (email) DO NOTHING
   `);
 
   await pool.query(`
     INSERT INTO posts (title, content, author_id, published) VALUES
-      ('Introducción a Node.js', 'Node.js es un runtime de JavaScript...', 1, true),
-      ('PostgreSQL vs MySQL', 'Ambas bases de datos tienen ventajas...', 2, true),
-      ('APIs RESTful', 'REST es un estilo arquitectónico...', 1, true),
-      ('Manejo de errores en Express', 'El manejo apropiado de errores...', 3, false),
-      ('Async/Await explicado', 'Las promesas simplifican el código asíncrono...', 1, false)
+      ('Introducción a Node.js', 'Node.js me voló la cabeza cuando lo descubrí. Poder usar JavaScript en el backend cambió completamente cómo pienso el desarrollo web.', 1, true),
+      ('PostgreSQL vs MySQL', 'Después de trabajar con ambas, PostgreSQL ganó mi corazón. Su manejo de tipos de datos y las foreign keys hacen todo más ordenado.', 2, true),
+      ('APIs RESTful', 'Construir una API REST desde cero te enseña más que cualquier tutorial. Entiendes por qué cada decisión importa cuando alguien más tiene que consumirla.', 1, true),
+      ('Manejo de errores en Express', 'Nadie habla de esto al principio pero el manejo de errores es lo que separa una API amateur de una profesional. Un buen middleware de errores te salva la vida.', 3, false),
+      ('Async/Await explicado', 'Cuando entendí async/await fue como si todo hiciera clic. Ya no más callbacks anidados ni cadenas de .then() interminables. El código se lee como si fuera síncrono.', 1, false)
     ON CONFLICT DO NOTHING
   `);
 
