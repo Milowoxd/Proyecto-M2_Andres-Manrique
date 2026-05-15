@@ -111,6 +111,7 @@ Proyecto-M2_Andres-Manrique/
 │   └── openapi.yaml        # Documentación OpenAPI
 ├── server.js               # Punto de entrada del servidor
 ├── .env.example            # Plantilla de variables de entorno
+├── AI_LOG.md               # Registro de uso de IA
 └── README.md
 ```
 
