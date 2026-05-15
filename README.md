@@ -153,6 +153,12 @@ La API queda disponible en `http://localhost:3000`
 | `PORT` | Puerto del servidor (default: 3000) |
 | `DATABASE_URL` | URL de conexión a PostgreSQL |
 
+**Ejemplo de `.env`:**
+```
+PORT=3000
+DATABASE_URL=postgresql://user:password@host:5432/miniblog
+```
+
 ---
 
 ## Endpoints disponibles
@@ -240,6 +246,10 @@ Para verla de forma visual:
 ## Deploy en Railway
 
 La API está desplegada en Railway y conectada a una base de datos PostgreSQL en la nube.
+
+**URLs de Railway:**
+- Internal URL: `proyecto-m2andres-manrique.railway.internal`
+- Public URL: `https://proyecto-m2andres-manrique-production.up.railway.app`
 
 **URL pública:** `https://proyecto-m2andres-manrique-production.up.railway.app`
 
